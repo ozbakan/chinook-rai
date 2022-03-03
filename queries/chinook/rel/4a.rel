@@ -1,0 +1,5 @@
+// Author:      Tolga Ozbakan
+// Date:        02-15-2022
+// Description: Selects all n-ary tuples from the genre relation
+
+def output = genre

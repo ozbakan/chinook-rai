@@ -1,0 +1,10 @@
+-- Author:       Tolga Ozbakan
+-- Date:         02-08-2022
+-- Description:  Selects N binary tuples from relation sorted by element
+
+SELECT
+    name,
+    bytes
+FROM track
+ORDER BY bytes DESC
+LIMIT 10

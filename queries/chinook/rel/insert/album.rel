@@ -1,0 +1,17 @@
+// Here we specify schema, syntax and data using the configuration relation.
+// Additionally we could specify path and integration (for credentials).
+def config:schema:AlbumId="int"     // INTEGER          NOT NULL    PK
+def config:schema:Title="string"    // NVARCHAR(160)    NOT NULL
+def config:schema:ArtistId="int"    // INTEGER          NOT NULL    FK
+
+def config:syntax:header_row=1
+            
+// Note that mydata is passed in as a string argument, containing the CSV data.
+def config:data = mydata
+
+// Next, we store the imported CSV data in the EDB relation named album_csv. 
+// The idea is to store imported data as EDB relations, and then define other 
+// derived relations as IDB relations based on the EDB data.
+def csv = load_csv[config]          // intermediate IDB relation
+def delete[:album_csv] = album_csv  // clear potential previous contents
+def insert[:album_csv] = csv        // store the csv data in a module

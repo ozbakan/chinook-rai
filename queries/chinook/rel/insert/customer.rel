@@ -1,0 +1,19 @@
+def config:schema:CustomerId="int"      // INTEGER      NOT NULL    PK
+def config:schema:FirstName="string"    // NVARCHAR(40) NOT NULL
+def config:schema:LastName="string"     // NVARCHAR(20) NOT NULL
+def config:schema:Company="string"      // NVARCHAR(80)
+def config:schema:Address="string"      // NVARCHAR(70)
+def config:schema:City="string"         // NVARCHAR(40)
+def config:schema:State="string"        // NVARCHAR(40)
+def config:schema:Country="string"      // NVARCHAR(40)
+def config:schema:PostalCode="string"   // NVARCHAR(10)
+def config:schema:Phone="string"        // NVARCHAR(24)
+def config:schema:Fax="string"          // NVARCHAR(24)
+def config:schema:Email="string"        // NVARCHAR(60) NOT NULL
+def config:schema:SupportRepId="int"    // INTEGER                  FK
+
+def config:syntax:header_row=1
+def config:data = mydata
+
+def delete[:customer_csv] = customer_csv
+def insert[:customer_csv] = load_csv[config]

@@ -1,0 +1,22 @@
+// Author:      Tolga Ozbakan
+// Date:        02-15-2022
+// Description: Creates a purchase type column based on invoice total.
+
+def low(id, value) = 
+	invoice_date(id, _, value) 
+    and value < decimal[64, 2, 1.99]
+
+def middle(id, value) = 
+	invoice_date(id, _, value) 
+    and value > decimal[64, 2, 1.99] 
+    and value < decimal[64, 2, 6.99]
+     
+def high(id, value) =
+	invoice_date(id, _, value)
+	and not low(id, value)
+	and not middle(id, value)
+
+def output(id, value, type) =
+	low(id, value) and type = "Low"
+	or middle(id, value) and type = "Middle"
+	or high(id, value) and type = "High"

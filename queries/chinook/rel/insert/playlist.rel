@@ -1,0 +1,8 @@
+def config:schema:PlaylistId="int"  // INTEGER          NOT NULL PK
+def config:schema:Name="string"     // NVARCHAR(120)
+
+def config:syntax:header_row=1
+def config:data = mydata
+
+def delete[:playlist_csv] = playlist_csv
+def insert[:playlist_csv] = load_csv[config]

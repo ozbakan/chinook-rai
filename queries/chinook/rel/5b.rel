@@ -1,0 +1,10 @@
+// Author:       Tolga Ozbakan
+// Date:         02-15-2022
+// Description:  Selects invoices that contain the letter 'ß' in address.
+
+def output(id, address, total) =
+    invoice_csv(:InvoiceId, pos, id)
+    and invoice_csv(:BillingAddress, pos, address)
+    and invoice_csv(:Total, pos, total)
+    and like_match("%ß%", address)
+    from pos

@@ -1,0 +1,62 @@
+// Let's transform the EDB data before using it in rest of the model. Note that
+// we could have done this transformation before storing the CSV files as EDB. 
+
+// The first four relations are very simple; they relate an id to a name. We do
+// this by replacing the FilePos row key in the CSV file with the values in the 
+// id columns namely, ArtistId, GenreId, MediaTypeId and PlayListId. In doing
+// we assume that the key is unique to each row. 
+
+// TODO: It is good practice to ensure that this key is unique using an 
+// integrity constraint.
+
+def artist(:name, id, name) =
+    artist_csv(:ArtistId, pos, id) 
+    and artist_csv(:Name, pos, name) 
+    from pos
+
+def genre(:name, id, name) = 
+    genre_csv(:GenreId, pos, id)
+    and genre_csv(:Name, pos, name)
+    from pos
+
+def media_type(:name, id, name) = 
+    media_type_csv(:MediaTypeId, pos, id)
+    and media_type_csv(:Name, pos, name)
+    from pos
+
+def playlist(:name, id, name) = 
+    playlist_csv(:PlaylistId, pos, id)
+    and playlist_csv(:Name, pos, name)
+    from pos
+
+// Now we will model the album relation with two subrelations, first one 
+// relating the title to the id and the next one relating the artist id to 
+// the album id.
+
+def album(:title, id, title) =
+    album_csv(:AlbumId, pos, id) 
+    and album_csv(:Title, pos, title) 
+    from pos
+
+def album(:artist_id, id, artist_id) =
+    album_csv(:AlbumId, pos, id) 
+    and album_csv(:ArtistId, pos, artist_id)
+    from pos
+
+// The next relation is an exercise in Rel's standard library to build a date 
+// data type from datetime. It shows basic string and date operations available 
+// in Rel.
+
+def invoice_date(id, date, total) =
+    invoice_csv(:InvoiceId, pos, id)
+    and invoice_csv(:InvoiceDate, pos, dt)
+    and invoice_csv(:Total, pos, total)
+    and year = datetime_year_UTC[dt]
+    and month = datetime_month_UTC[dt]
+    and day = datetime_day_UTC[dt]
+    and y = concat[year, '-']
+    and m = concat[y, month]
+    and d = concat[m, '-']
+    and date_str = concat[d, day]
+    and date = parse_date[date_str, "Y-m-d"]
+from pos, dt, year, y, month, m, day, d, date_str

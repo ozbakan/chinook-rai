@@ -1,0 +1,8 @@
+def config:schema:GenreId="int"     // INTEGER          NOT NULL  PK
+def config:schema:Name="string"     // NVARCHAR(120)
+
+def config:syntax:header_row=1
+def config:data = mydata
+
+def delete[:genre_csv] = genre_csv
+def insert[:genre_csv] = load_csv[config]

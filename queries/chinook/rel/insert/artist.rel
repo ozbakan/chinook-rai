@@ -1,0 +1,8 @@
+def config:schema:ArtistId="int"    // INTEGER          NOT NULL    PK
+def config:schema:Name="string"     // NVARCHAR(120)
+
+def config:syntax:header_row=1
+def config:data = mydata
+
+def delete[:artist_csv] = artist_csv
+def insert[:artist_csv] = load_csv[config]

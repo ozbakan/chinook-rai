@@ -1,0 +1,15 @@
+// Author:       Tolga Ozbakan
+// Date:         02-15-2022
+// Description:  Computes a new relation, by relating an invoice to its tax.
+
+def tax_amount = decimal[64, 2, 1.15]
+def countries_with_tax_amount = {"Belgium"; "France"}
+
+def output(id, country, city, total, tax) =
+    invoice_csv(:InvoiceId, pos, id)
+    and invoice_csv(:BillingCountry, pos, country)
+    and invoice_csv(:BillingCity, pos, city)
+    and invoice_csv(:Total, pos, total)
+    and countries_with_tax_amount(country)
+    and tax = total * tax_amount
+    from pos

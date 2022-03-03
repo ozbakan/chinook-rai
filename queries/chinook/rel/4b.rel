@@ -1,0 +1,15 @@
+// Author:      Tolga Ozbakan
+// Date:        02-15-2022
+// Description: Selects N binary tuples from relation sorted by element
+// Note:        The output relation is not sorted in it self, it is a set.
+
+def track(:bytes, bytes, name) =
+    track_csv(:Name, pos, name) 
+    and track_csv(:Bytes, pos, bytes)
+    from pos
+
+def sorted_track = bottom[10, track:bytes]
+
+def output(name, bytes) = 
+    track:bytes(bytes, name)
+    and sorted_track(_, bytes, name)

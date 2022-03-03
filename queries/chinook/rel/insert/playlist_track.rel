@@ -1,0 +1,8 @@
+def config:schema:PlaylistId="int"  // INTEGER      NOT NULL    PK FK
+def config:schema:TrackId="int"     // INTEGER      NOT NULL    PK FK
+
+def config:syntax:header_row=1
+def config:data = mydata
+
+def delete[:playlist_track_csv] = playlist_track_csv
+def insert[:playlist_track_csv] = load_csv[config]
