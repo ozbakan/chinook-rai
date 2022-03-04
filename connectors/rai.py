@@ -12,7 +12,7 @@ from railib import api, config, show
 engine_name = datetime.today().strftime('%Y-%m-%d')
 database = 'chinook'
 
-def build():
+def create_chinook_db():
     # Configure logging
     logging.basicConfig(stream=sys.stderr,
                         format='%(asctime)s %(levelname)-8s %(message)s',
@@ -92,5 +92,4 @@ def execute(queryfile):
 
 
 if __name__ == '__main__':
-    #build() 
     print(execute('queries/chinook/rel/5c.rel'))
