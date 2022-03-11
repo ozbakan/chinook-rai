@@ -20,8 +20,8 @@ class QueryTester(unittest.TestCase):
         self.sqlite_directory = 'queries/chinook/sql/sqlite'
         self.snowflake_directory = 'queries/chinook/sql/snowflake'
 
-        self.a = self.snowflake
-        self.a_dir = self.snowflake_directory
+        self.a = self.duckdb
+        self.a_dir = self.duckdb_directory
         self.b = self.sqlite
         self.b_dir = self.sqlite_directory
 
