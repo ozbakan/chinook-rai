@@ -14,7 +14,7 @@ invoices as (
     select
         invoice_id as invoice_id,
         customer_id as customer_id,
-        DATE(invoice_date) as invoice_date,
+        invoice_date::date as invoice_date,
         total
 
     from invoice
@@ -26,8 +26,8 @@ customer_invoices as (
     select
         customer_id,
 
-        min(invoice_date) as first_invoice_date,
-        max(invoice_date) as most_recent_invoice_date,
+        to_char(min(invoice_date), '%Y-%m-%d') as first_invoice_date,
+        to_char(max(invoice_date), '%Y-%m-%d') as most_recent_invoice_date,
         count(invoice_id) as number_of_invoices
 
     from invoices

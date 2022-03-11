@@ -80,4 +80,4 @@ class DuckDBConnector:
 
 if __name__ == '__main__':
     dc = DuckDBConnector('data/chinook/duckdb/chinook.db')
-    print(dc.execute('queries/chinook/sql/common/4a.sql'))
+    print(dc.execute('queries/chinook/sql/duckdb/9a.sql'))

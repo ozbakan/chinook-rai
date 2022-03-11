@@ -149,6 +149,5 @@ class SnowflakeConnector:
 
 
 if __name__ == '__main__':
-    sc = SnowflakeConnector(os.path.join(
-        str(Path.home()), '.snowflake/config'))
-    sc.create_chinook_db()
+    sc = SnowflakeConnector(os.path.join(str(Path.home()), '.snowflake/config'))
+    print(sc.execute('queries/chinook/sql/snowflake/9a.sql'))

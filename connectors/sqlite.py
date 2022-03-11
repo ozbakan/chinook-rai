@@ -79,4 +79,4 @@ class SQLiteConnector:
 
 if __name__ == '__main__':
     sc = SQLiteConnector('data/chinook/sqlite/chinook.db')
-    print(sc.execute('queries/chinook/sql/common/4a.sql'))
+    print(sc.execute('queries/chinook/sql/sqlite/9a.sql'))
