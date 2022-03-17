@@ -7,6 +7,6 @@ select track_id,
     name
 from track
 where track_id not in (
-        select DISTINCT track_id
+        select distinct track_id
         from invoice_line
     )
