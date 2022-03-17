@@ -34,7 +34,7 @@ CREATE TABLE album
     artist_id INTEGER NOT NULL,
     CONSTRAINT pk_album PRIMARY KEY (album_id),
     FOREIGN KEY (artist_id) REFERENCES artist (artist_id) 
-        ON DELETE NO ACTION ON UPDATE NO ACTION
+        on DELETE NO ACTION on UPDATE NO ACTION
 );
 
 CREATE TABLE artist
@@ -61,7 +61,7 @@ CREATE TABLE customer
     support_rep_id INTEGER,
     CONSTRAINT pk_customer PRIMARY KEY (customer_id),
     FOREIGN KEY (support_rep_id) REFERENCES employee (employee_id) 
-        ON DELETE NO ACTION ON UPDATE NO ACTION
+        on DELETE NO ACTION on UPDATE NO ACTION
 );
 
 CREATE TABLE employee
@@ -83,7 +83,7 @@ CREATE TABLE employee
     email NVARCHAR(60),
     CONSTRAINT PK_Employee PRIMARY KEY (employee_id),
     FOREIGN KEY (reports_to) REFERENCES employee (employee_id) 
-        ON DELETE NO ACTION ON UPDATE NO ACTION
+        on DELETE NO ACTION on UPDATE NO ACTION
 );
 
 CREATE TABLE genre
@@ -106,7 +106,7 @@ CREATE TABLE invoice
     total NUMERIC(10,2) NOT NULL,
     CONSTRAINT pk_invoice PRIMARY KEY (invoice_id),
     FOREIGN KEY (customer_id) REFERENCES customer (customer_id) 
-        ON DELETE NO ACTION ON UPDATE NO ACTION
+        on DELETE NO ACTION on UPDATE NO ACTION
 );
 
 CREATE TABLE invoice_line
@@ -118,9 +118,9 @@ CREATE TABLE invoice_line
     quantity INTEGER NOT NULL,
     CONSTRAINT pk_invoice_line PRIMARY KEY (invoice_line_id),
     FOREIGN KEY (invoice_id) REFERENCES invoice (invoice_id) 
-        ON DELETE NO ACTION ON UPDATE NO ACTION,
+        on DELETE NO ACTION on UPDATE NO ACTION,
     FOREIGN KEY (track_id) REFERENCES track (track_id) 
-        ON DELETE NO ACTION ON UPDATE NO ACTION
+        on DELETE NO ACTION on UPDATE NO ACTION
 );
 
 CREATE TABLE media_type
@@ -143,9 +143,9 @@ CREATE TABLE playlist_track
     track_id INTEGER NOT NULL,
     CONSTRAINT pk_playlist_track PRIMARY KEY (playlist_id, track_id),
     FOREIGN KEY (playlist_id) REFERENCES playlist (playlist_id) 
-        ON DELETE NO ACTION ON UPDATE NO ACTION,
+        on DELETE NO ACTION on UPDATE NO ACTION,
     FOREIGN KEY (track_id) REFERENCES track (track_id) 
-        ON DELETE NO ACTION ON UPDATE NO ACTION
+        on DELETE NO ACTION on UPDATE NO ACTION
 );
 
 CREATE TABLE track
@@ -161,32 +161,32 @@ CREATE TABLE track
     unit_price NUMERIC(10,2) NOT NULL,
     CONSTRAINT pk_track PRIMARY KEY (track_id),
     FOREIGN KEY (album_id) REFERENCES album (album_id) 
-        ON DELETE NO ACTION ON UPDATE NO ACTION,
+        on DELETE NO ACTION on UPDATE NO ACTION,
     FOREIGN KEY (genre_id) REFERENCES genre (genre_id) 
-        ON DELETE NO ACTION ON UPDATE NO ACTION,
+        on DELETE NO ACTION on UPDATE NO ACTION,
     FOREIGN KEY (media_type_id) REFERENCES media_type (media_type_id) 
-        ON DELETE NO ACTION ON UPDATE NO ACTION
+        on DELETE NO ACTION on UPDATE NO ACTION
 );
 
 /*******************************************************************************
    Create Foreign Keys
 *******************************************************************************/
-CREATE INDEX ifk_album_artist_id ON album (artist_id);
+CREATE INDEX ifk_album_artist_id on album (artist_id);
 
-CREATE INDEX ifk_customer_support_rep_id ON customer (support_rep_id);
+CREATE INDEX ifk_customer_support_rep_id on customer (support_rep_id);
 
-CREATE INDEX ifk_employee_reports_to ON employee (reports_to);
+CREATE INDEX ifk_employee_reports_to on employee (reports_to);
 
-CREATE INDEX ifk_invoice_customer_id ON invoice (customer_id);
+CREATE INDEX ifk_invoice_customer_id on invoice (customer_id);
 
-CREATE INDEX ifk_invoice_line_invoice_id ON invoice_line (invoice_id);
+CREATE INDEX ifk_invoice_line_invoice_id on invoice_line (invoice_id);
 
-CREATE INDEX ifk_invoice_line_track_id ON invoice_line (track_id);
+CREATE INDEX ifk_invoice_line_track_id on invoice_line (track_id);
 
-CREATE INDEX ifk_playlist_track_track_id ON playlist_track (track_id);
+CREATE INDEX ifk_playlist_track_track_id on playlist_track (track_id);
 
-CREATE INDEX ifk_track_album_id ON track (album_id);
+CREATE INDEX ifk_track_album_id on track (album_id);
 
-CREATE INDEX ifk_track_genre_id ON track (genre_id);
+CREATE INDEX ifk_track_genre_id on track (genre_id);
 
-CREATE INDEX ifk_track_media_type_id ON track (media_type_id);
+CREATE INDEX ifk_track_media_type_id on track (media_type_id);

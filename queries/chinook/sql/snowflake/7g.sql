@@ -2,8 +2,8 @@
 -- Date:          02-11-2022
 -- Description:   Computes yearly invoice averages in the USA.
 
-SELECT to_char(invoice_date, '%Y'),
+select to_char(invoice_date, '%Y'),
     round(avg(total::float), 2)
-FROM invoice
-WHERE billing_country = 'USA'
-GROUP BY invoice_date
+from invoice
+where billing_country = 'USA'
+group by invoice_date

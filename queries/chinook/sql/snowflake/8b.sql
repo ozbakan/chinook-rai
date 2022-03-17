@@ -2,11 +2,11 @@
 -- Date:          02-11-2022
 -- Description:   Displays global average as a new element.
 
-SELECT billing_country,
+select billing_country,
     round(avg(total::float8), 2),
     (
-        SELECT round(avg(total::float8), 2)
-        FROM invoice
+        select round(avg(total::float8), 2)
+        from invoice
     ) 
-FROM invoice
-GROUP BY billing_country
+from invoice
+group by billing_country

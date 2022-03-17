@@ -2,11 +2,11 @@
 -- Date:          02-11-2022
 -- Description:   Returns tracks that are not in any of the invoices.
 
-SELECT track_id,
+select track_id,
     composer,
     name
 FROM track
 WHERE track_id NOT IN (
-        SELECT DISTINCT track_id
+        select DISTINCT track_id
         FROM invoice_line
     )

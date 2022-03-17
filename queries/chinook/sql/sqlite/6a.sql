@@ -3,7 +3,7 @@
 -- Description: Joins relations. This will produce 412 records, one for 
 -- each invoice.
 
-SELECT c.last_name,
+select c.last_name,
     c.first_name,
     c.email,
     i.customer_id,
@@ -11,4 +11,4 @@ SELECT c.last_name,
     i.total
 FROM invoice as i
     INNER JOIN customer as c 
-    ON i.customer_id = c.customer_id
+    on i.customer_id = c.customer_id

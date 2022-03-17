@@ -2,7 +2,7 @@
 -- Date:         02-08-2022
 -- Description:  Selects N binary tuples from relation sorted by element
 
-SELECT
+select
     name,
     bytes
 FROM track

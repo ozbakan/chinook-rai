@@ -2,7 +2,7 @@
 -- Date:         02-09-2022
 -- Description:  Computes a new relation, by relating an invoice to its tax.
 
-SELECT invoice_id,
+select invoice_id,
     billing_country,
     billing_city,
     total,

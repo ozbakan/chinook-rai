@@ -6,8 +6,8 @@
 -- without any albums. This left join will include all artists, whether they
 -- have an album or not.
 
-SELECT a.name,
+select a.name,
     b.title
-FROM artist AS a
-    LEFT JOIN album AS b 
-    ON a.artist_id = b.artist_id
+from artist as a
+    left join album as b 
+    on a.artist_id = b.artist_id

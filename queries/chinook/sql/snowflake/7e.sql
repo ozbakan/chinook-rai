@@ -2,8 +2,8 @@
 -- Date:          02-11-2022
 -- Description:   Computes average subtotals for cities beginning with 'B'.
 
-SELECT billing_city,
+select billing_city,
     round(avg(total::float8), 2)
-FROM invoice
-WHERE billing_city LIKE 'B%'
-GROUP BY billing_city
+from invoice
+where billing_city like 'B%'
+group by billing_city

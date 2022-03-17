@@ -3,7 +3,7 @@
 -- Description:   Joins multiple relations. Shows the employees responsible for 
 -- the highest invoice totals.
 
-SELECT e.first_name,
+select e.first_name,
     e.last_name,
     e.employee_id,
     DATE(e.hire_date),
@@ -13,8 +13,8 @@ SELECT e.first_name,
     i.customer_id,
     i.total
 FROM invoice AS i
-    INNER JOIN customer AS c ON i.customer_id = c.customer_id
-    INNER JOIN employee AS e ON c.support_rep_id = e.employee_id
+    INNER JOIN customer AS c on i.customer_id = c.customer_id
+    INNER JOIN employee AS e on c.support_rep_id = e.employee_id
 ORDER BY
     i.total DESC,
     e.hire_date DESC
