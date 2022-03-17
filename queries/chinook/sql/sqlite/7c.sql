@@ -4,5 +4,5 @@
 
 select postal_code,
     substr(postal_code, 1, 5)
-FROM customer
-WHERE country = 'USA'
+from customer
+where country = 'USA'

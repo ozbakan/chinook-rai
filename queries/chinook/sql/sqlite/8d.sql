@@ -3,12 +3,12 @@
 -- Description:   Returns invoices on the invoice dates of multiple invoice ids.
 
 select invoice_id,
-    DATE(invoice_date),
+    date(invoice_date),
     billing_address,
     billing_city
-FROM invoice
-WHERE invoice_date IN (
+from invoice
+where invoice_date in (
         select invoice_date
-        FROM invoice
-        WHERE invoice_id IN (251, 252, 255)
+        from invoice
+        where invoice_id in (251, 252, 255)
     )

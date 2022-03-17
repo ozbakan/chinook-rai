@@ -3,4 +3,4 @@
 -- Description:  Selects all n-ary tuples from the genre relation
 
 select *
-FROM customer
+from customer

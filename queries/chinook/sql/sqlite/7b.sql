@@ -4,5 +4,5 @@
 
 select 
     first_name || ' ' || last_name
-FROM customer
-WHERE country = 'USA'
+from customer
+where country = 'USA'

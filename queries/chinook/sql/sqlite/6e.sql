@@ -6,16 +6,16 @@
 select e.first_name,
     e.last_name,
     e.employee_id,
-    DATE(e.hire_date),
+    date(e.hire_date),
     c.first_name,
     c.last_name,
     c.support_rep_id,
     i.customer_id,
     i.total
-FROM invoice AS i
-    INNER JOIN customer AS c on i.customer_id = c.customer_id
-    INNER JOIN employee AS e on c.support_rep_id = e.employee_id
-ORDER BY
-    i.total DESC,
-    e.hire_date DESC
-LIMIT 10
+from invoice as i
+    inner join customer as c on i.customer_id = c.customer_id
+    inner join employee as e on c.support_rep_id = e.employee_id
+order by
+    i.total desc,
+    e.hire_date desc
+limit 10

@@ -9,4 +9,4 @@ select round(sum(total), 2),
     count(total),
     count(billing_state),
     count(billing_postal_code)
-FROM invoice
+from invoice

@@ -5,5 +5,5 @@
 select invoice_id,
     billing_address,
     total
-FROM invoice
-WHERE billing_address LIKE '%ß%'
+from invoice
+where billing_address like '%ß%'

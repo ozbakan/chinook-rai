@@ -5,7 +5,7 @@
 
 select billing_city,
     round(avg(total), 2)
-FROM invoice
-WHERE billing_city LIKE 'B%'
+from invoice
+where billing_city like 'B%'
 group by billing_city
 having avg(total) > 5.5

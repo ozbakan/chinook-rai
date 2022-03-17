@@ -7,5 +7,5 @@ select invoice_id,
     billing_city,
     total,
     round(total * 1.15, 2)
-FROM invoice
-WHERE billing_country IN ('Belgium', 'France')
+from invoice
+where billing_country in ('Belgium', 'France')

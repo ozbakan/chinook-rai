@@ -8,6 +8,6 @@
 
 select a.name,
     b.title
-FROM artist AS a
-    LEFT JOIN album AS b 
+from artist as a
+    left join album as b 
     on a.artist_id = b.artist_id

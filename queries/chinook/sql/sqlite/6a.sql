@@ -9,6 +9,6 @@ select c.last_name,
     i.customer_id,
     i.invoice_id,
     i.total
-FROM invoice as i
-    INNER JOIN customer as c 
+from invoice as i
+    inner join customer as c 
     on i.customer_id = c.customer_id

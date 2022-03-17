@@ -6,4 +6,4 @@ select last_name,
     first_name,
     strftime('%Y-%m-%d', birth_date),
     date('now') - date(birth_date)
-FROM employee
+from employee

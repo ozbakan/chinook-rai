@@ -5,5 +5,5 @@
 select invoice_id,
     date(invoice_date),
     total
-FROM invoice
-WHERE date(invoice_date) = '2009-01-01'
+from invoice
+where date(invoice_date) = '2009-01-01'

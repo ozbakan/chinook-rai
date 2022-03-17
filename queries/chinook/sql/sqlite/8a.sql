@@ -5,8 +5,8 @@
 select invoice_id,
     billing_address,
     total
-FROM invoice
-WHERE total < (
+from invoice
+where total < (
         select avg(total)
-        FROM invoice
+        from invoice
     )

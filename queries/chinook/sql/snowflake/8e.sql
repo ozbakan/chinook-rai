@@ -6,7 +6,7 @@ select track_id,
     composer,
     name
 from track
-where track_id notin (
+where track_id not in (
         select DISTINCT track_id
         from invoice_line
     )

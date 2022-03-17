@@ -1,192 +1,192 @@
 /*******************************************************************************
    Drop Tables
 *******************************************************************************/
-DROP TABLE IF EXISTS album;
+drop table if exists album;
 
-DROP TABLE IF EXISTS artist;
+drop table if exists artist;
 
-DROP TABLE IF EXISTS customer;
+drop table if exists customer;
 
-DROP TABLE IF EXISTS employee;
+drop table if exists employee;
 
-DROP TABLE IF EXISTS genre;
+drop table if exists genre;
 
-DROP TABLE IF EXISTS invoice;
+drop table if exists invoice;
 
-DROP TABLE IF EXISTS invoice_line;
+drop table if exists invoice_line;
 
-DROP TABLE IF EXISTS media_type;
+drop table if exists media_type;
 
-DROP TABLE IF EXISTS playlist;
+drop table if exists playlist;
 
-DROP TABLE IF EXISTS playlist_track;
+drop table if exists playlist_track;
 
-DROP TABLE IF EXISTS track;
+drop table if exists track;
 
 
 /*******************************************************************************
-   Create Tables
+   create tables
 *******************************************************************************/
-CREATE TABLE album
+create table album
 (
-    album_id INTEGER NOT NULL,
-    title NVARCHAR(160) NOT NULL,
-    artist_id INTEGER NOT NULL,
-    CONSTRAINT pk_album PRIMARY KEY (album_id),
-    FOREIGN KEY (artist_id) REFERENCES artist (artist_id) 
-        on DELETE NO ACTION on UPDATE NO ACTION
+    album_id integer not null,
+    title nvarchar(160) not null,
+    artist_id integer not null,
+    constraint pk_album primary key (album_id),
+    foreign key (artist_id) references artist (artist_id) 
+        on delete no action on update no action
 );
 
-CREATE TABLE artist
+create table artist
 (
-    artist_id INTEGER NOT NULL,
-    name NVARCHAR(120),
-    CONSTRAINT pk_artist PRIMARY KEY (artist_id)
+    artist_id integer not null,
+    name nvarchar(120),
+    constraint pk_artist primary key (artist_id)
 );
 
-CREATE TABLE customer
+create table customer
 (
-    customer_id INTEGER NOT NULL,
-    first_name NVARCHAR(40) NOT NULL,
-    last_name NVARCHAR(20) NOT NULL,
-    company NVARCHAR(80),
-    address NVARCHAR(70),
-    city NVARCHAR(40),
-    state NVARCHAR(40),
-    country NVARCHAR(40),
-    postal_code NVARCHAR(10),
-    phone NVARCHAR(24),
-    fax NVARCHAR(24),
-    email NVARCHAR(60) NOT NULL,
-    support_rep_id INTEGER,
-    CONSTRAINT pk_customer PRIMARY KEY (customer_id),
-    FOREIGN KEY (support_rep_id) REFERENCES employee (employee_id) 
-        on DELETE NO ACTION on UPDATE NO ACTION
+    customer_id integer not null,
+    first_name nvarchar(40) not null,
+    last_name nvarchar(20) not null,
+    company nvarchar(80),
+    address nvarchar(70),
+    city nvarchar(40),
+    state nvarchar(40),
+    country nvarchar(40),
+    postal_code nvarchar(10),
+    phone nvarchar(24),
+    fax nvarchar(24),
+    email nvarchar(60) not null,
+    support_rep_id integer,
+    constraint pk_customer primary key (customer_id),
+    foreign key (support_rep_id) references employee (employee_id) 
+        on delete no action on update no action
 );
 
-CREATE TABLE employee
+create table employee
 (
-    employee_id INTEGER NOT NULL,
-    last_name NVARCHAR(20) NOT NULL,
-    first_name NVARCHAR(20) NOT NULL,
-    title NVARCHAR(30),
-    reports_to INTEGER,
-    birth_date DATETIME,
-    hire_date DATETIME,
-    address NVARCHAR(70),
-    city NVARCHAR(40),
-    state NVARCHAR(40),
-    country NVARCHAR(40),
-    postal_code NVARCHAR(10),
-    phone NVARCHAR(24),
-    fax NVARCHAR(24),
-    email NVARCHAR(60),
-    CONSTRAINT PK_Employee PRIMARY KEY (employee_id),
-    FOREIGN KEY (reports_to) REFERENCES employee (employee_id) 
-        on DELETE NO ACTION on UPDATE NO ACTION
+    employee_id integer not null,
+    last_name nvarchar(20) not null,
+    first_name nvarchar(20) not null,
+    title nvarchar(30),
+    reports_to integer,
+    birth_date datetime,
+    hire_date datetime,
+    address nvarchar(70),
+    city nvarchar(40),
+    state nvarchar(40),
+    country nvarchar(40),
+    postal_code nvarchar(10),
+    phone nvarchar(24),
+    fax nvarchar(24),
+    email nvarchar(60),
+    constraint PK_Employee primary key (employee_id),
+    foreign key (reports_to) references employee (employee_id) 
+        on delete no action on update no action
 );
 
-CREATE TABLE genre
+create table genre
 (
-    genre_id INTEGER NOT NULL,
-    name NVARCHAR(120),
-    CONSTRAINT pk_genre PRIMARY KEY (genre_id)
+    genre_id integer not null,
+    name nvarchar(120),
+    constraint pk_genre primary key (genre_id)
 );
 
-CREATE TABLE invoice
+create table invoice
 (
-    invoice_id INTEGER NOT NULL,
-    customer_id INTEGER NOT NULL,
-    invoice_date DATETIME NOT NULL,
-    billing_address NVARCHAR(70),
-    billing_city NVARCHAR(40),
-    billing_state NVARCHAR(40),
-    billing_country NVARCHAR(40),
-    billing_postal_code NVARCHAR(10),
-    total NUMERIC(10,2) NOT NULL,
-    CONSTRAINT pk_invoice PRIMARY KEY (invoice_id),
-    FOREIGN KEY (customer_id) REFERENCES customer (customer_id) 
-        on DELETE NO ACTION on UPDATE NO ACTION
+    invoice_id integer not null,
+    customer_id integer not null,
+    invoice_date datetime not null,
+    billing_address nvarchar(70),
+    billing_city nvarchar(40),
+    billing_state nvarchar(40),
+    billing_country nvarchar(40),
+    billing_postal_code nvarchar(10),
+    total numeric(10,2) not null,
+    constraint pk_invoice primary key (invoice_id),
+    foreign key (customer_id) references customer (customer_id) 
+        on delete no action on update no action
 );
 
-CREATE TABLE invoice_line
+create table invoice_line
 (
-    invoice_line_id INTEGER NOT NULL,
-    invoice_id INTEGER NOT NULL,
-    track_id INTEGER NOT NULL,
-    unit_price NUMERIC(10,2) NOT NULL,
-    quantity INTEGER NOT NULL,
-    CONSTRAINT pk_invoice_line PRIMARY KEY (invoice_line_id),
-    FOREIGN KEY (invoice_id) REFERENCES invoice (invoice_id) 
-        on DELETE NO ACTION on UPDATE NO ACTION,
-    FOREIGN KEY (track_id) REFERENCES track (track_id) 
-        on DELETE NO ACTION on UPDATE NO ACTION
+    invoice_line_id integer not null,
+    invoice_id integer not null,
+    track_id integer not null,
+    unit_price numeric(10,2) not null,
+    quantity integer not null,
+    constraint pk_invoice_line primary key (invoice_line_id),
+    foreign key (invoice_id) references invoice (invoice_id) 
+        on delete no action on update no action,
+    foreign key (track_id) references track (track_id) 
+        on delete no action on update no action
 );
 
-CREATE TABLE media_type
+create table media_type
 (
-    media_type_id INTEGER NOT NULL,
-    name NVARCHAR(120),
-    CONSTRAINT pk_media_type PRIMARY KEY (media_type_id)
+    media_type_id integer not null,
+    name nvarchar(120),
+    constraint pk_media_type primary key (media_type_id)
 );
 
-CREATE TABLE playlist
+create table playlist
 (
-    playlist_id INTEGER NOT NULL,
-    name NVARCHAR(120),
-    CONSTRAINT pk_playlist PRIMARY KEY (playlist_id)
+    playlist_id integer not null,
+    name nvarchar(120),
+    constraint pk_playlist primary key (playlist_id)
 );
 
-CREATE TABLE playlist_track
+create table playlist_track
 (
-    playlist_id INTEGER NOT NULL,
-    track_id INTEGER NOT NULL,
-    CONSTRAINT pk_playlist_track PRIMARY KEY (playlist_id, track_id),
-    FOREIGN KEY (playlist_id) REFERENCES playlist (playlist_id) 
-        on DELETE NO ACTION on UPDATE NO ACTION,
-    FOREIGN KEY (track_id) REFERENCES track (track_id) 
-        on DELETE NO ACTION on UPDATE NO ACTION
+    playlist_id integer not null,
+    track_id integer not null,
+    constraint pk_playlist_track primary key (playlist_id, track_id),
+    foreign key (playlist_id) references playlist (playlist_id) 
+        on delete no action on update no action,
+    foreign key (track_id) references track (track_id) 
+        on delete no action on update no action
 );
 
-CREATE TABLE track
+create table track
 (
-    track_id INTEGER NOT NULL,
-    name NVARCHAR(200) NOT NULL,
-    album_id INTEGER,
-    media_type_id INTEGER NOT NULL,
-    genre_id INTEGER,
-    composer NVARCHAR(220),
-    milliseconds INTEGER NOT NULL,
-    bytes INTEGER,
-    unit_price NUMERIC(10,2) NOT NULL,
-    CONSTRAINT pk_track PRIMARY KEY (track_id),
-    FOREIGN KEY (album_id) REFERENCES album (album_id) 
-        on DELETE NO ACTION on UPDATE NO ACTION,
-    FOREIGN KEY (genre_id) REFERENCES genre (genre_id) 
-        on DELETE NO ACTION on UPDATE NO ACTION,
-    FOREIGN KEY (media_type_id) REFERENCES media_type (media_type_id) 
-        on DELETE NO ACTION on UPDATE NO ACTION
+    track_id integer not null,
+    name nvarchar(200) not null,
+    album_id integer,
+    media_type_id integer not null,
+    genre_id integer,
+    composer nvarchar(220),
+    milliseconds integer not null,
+    bytes integer,
+    unit_price numeric(10,2) not null,
+    constraint pk_track primary key (track_id),
+    foreign key (album_id) references album (album_id) 
+        on delete no action on update no action,
+    foreign key (genre_id) references genre (genre_id) 
+        on delete no action on update no action,
+    foreign key (media_type_id) references media_type (media_type_id) 
+        on delete no action on update no action
 );
 
 /*******************************************************************************
    Create Foreign Keys
 *******************************************************************************/
-CREATE INDEX ifk_album_artist_id on album (artist_id);
+create index ifk_album_artist_id on album (artist_id);
 
-CREATE INDEX ifk_customer_support_rep_id on customer (support_rep_id);
+create index ifk_customer_support_rep_id on customer (support_rep_id);
 
-CREATE INDEX ifk_employee_reports_to on employee (reports_to);
+create index ifk_employee_reports_to on employee (reports_to);
 
-CREATE INDEX ifk_invoice_customer_id on invoice (customer_id);
+create index ifk_invoice_customer_id on invoice (customer_id);
 
-CREATE INDEX ifk_invoice_line_invoice_id on invoice_line (invoice_id);
+create index ifk_invoice_line_invoice_id on invoice_line (invoice_id);
 
-CREATE INDEX ifk_invoice_line_track_id on invoice_line (track_id);
+create index ifk_invoice_line_track_id on invoice_line (track_id);
 
-CREATE INDEX ifk_playlist_track_track_id on playlist_track (track_id);
+create index ifk_playlist_track_track_id on playlist_track (track_id);
 
-CREATE INDEX ifk_track_album_id on track (album_id);
+create index ifk_track_album_id on track (album_id);
 
-CREATE INDEX ifk_track_genre_id on track (genre_id);
+create index ifk_track_genre_id on track (genre_id);
 
-CREATE INDEX ifk_track_media_type_id on track (media_type_id);
+create index ifk_track_media_type_id on track (media_type_id);

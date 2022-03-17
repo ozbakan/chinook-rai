@@ -6,7 +6,7 @@ select billing_country,
     round(avg(total), 2),
     (
         select round(avg(total), 2)
-        FROM invoice
+        from invoice
     ) 
-FROM invoice
+from invoice
 group by billing_country

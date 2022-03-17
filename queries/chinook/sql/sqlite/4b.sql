@@ -5,6 +5,6 @@
 select
     name,
     bytes
-FROM track
-ORDER BY bytes DESC
-LIMIT 10
+from track
+order by bytes desc
+limit 10

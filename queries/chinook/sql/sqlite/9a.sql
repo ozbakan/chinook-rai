@@ -14,7 +14,7 @@ invoices as (
     select
         invoice_id as invoice_id,
         customer_id as customer_id,
-        DATE(invoice_date) as invoice_date,
+        date(invoice_date) as invoice_date,
         total
 
     from invoice

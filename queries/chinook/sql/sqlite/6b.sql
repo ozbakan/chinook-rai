@@ -8,6 +8,6 @@
 
 select a.name,
     b.title
-FROM artist AS a
-    INNER JOIN album AS b 
+from artist as a
+    inner join album as b 
     on a.artist_id = b.artist_id

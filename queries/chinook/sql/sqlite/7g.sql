@@ -4,6 +4,6 @@
 
 select strftime('%Y', invoice_date),
     round(avg(total), 2)
-FROM invoice
-WHERE billing_country = 'USA'
+from invoice
+where billing_country = 'USA'
 group by invoice_date

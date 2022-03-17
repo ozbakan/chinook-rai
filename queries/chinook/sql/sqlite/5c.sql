@@ -5,5 +5,5 @@
 select invoice_id,
     date(invoice_date),
     total
-FROM invoice
-WHERE invoice_date BETWEEN '2009-01-01' AND '2009-12-31'
+from invoice
+where invoice_date between '2009-01-01' and '2009-12-31'
