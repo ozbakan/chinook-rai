@@ -2,7 +2,7 @@
 -- Date:          02-10-2022
 -- Description:   Shows the artists that have no albums.
 
-SELECT a.name
-FROM artist AS a
-    LEFT JOIN album AS b ON a.artist_id = b.artist_id
-WHERE b.artist_id IS NULL
+select a.name
+from artist as a
+    left join album as b on a.artist_id = b.artist_id
+where b.artist_id is null
