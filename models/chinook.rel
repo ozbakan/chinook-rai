@@ -42,3 +42,21 @@ def album(:artist_id, id, artist_id) =
     album_csv(:album_id, pos, id) 
     and album_csv(:artist_id, pos, artist_id)
     from pos
+
+// The next relation is an exercise in Rel's standard library to build a date 
+// data type from datetime. It shows basic string and date operations available 
+// in Rel.
+
+def invoice_date(id, date, total) =
+    invoice_csv(:invoice_id, pos, id)
+    and invoice_csv(:invoice_date, pos, dt)
+    and invoice_csv(:total, pos, total)
+    and year = datetime_year_UTC[dt]
+    and month = datetime_month_UTC[dt]
+    and day = datetime_day_UTC[dt]
+    and y = concat[year, '-']
+    and m = concat[y, month]
+    and d = concat[m, '-']
+    and date_str = concat[d, day]
+    and date = parse_date[date_str, "Y-m-d"]
+from pos, dt, year, y, month, m, day, d, date_str
