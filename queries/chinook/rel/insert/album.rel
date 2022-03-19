@@ -1,8 +1,8 @@
 // Here we specify schema, syntax and data using the configuration relation.
 // Additionally we could specify path and integration (for credentials).
-def config:schema:AlbumId="int"     // INTEGER          NOT NULL    PK
-def config:schema:Title="string"    // NVARCHAR(160)    NOT NULL
-def config:schema:ArtistId="int"    // INTEGER          NOT NULL    FK
+def config:schema:album_id="int"     // INTEGER          NOT NULL    PK
+def config:schema:title="string"     // NVARCHAR(160)    NOT NULL
+def config:schema:artist_id="int"    // INTEGER          NOT NULL    FK
 
 def config:syntax:header_row=1
             

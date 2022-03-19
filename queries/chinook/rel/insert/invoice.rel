@@ -1,12 +1,12 @@
-def config:schema:InvoiceId="int"               // INTEGER          NOT NULL  PK
-def config:schema:CustomerId="int"              // INTEGER          NOT NULL
-def config:schema:InvoiceDate="datetime"        // DATETIME         NOT NULL
-def config:schema:BillingAddress="string"       // NVARCHAR(70)
-def config:schema:BillingCity="string"          // NVARCHAR(40)
-def config:schema:BillingState="string"         // NVARCHAR(40)
-def config:schema:BillingCountry="string"       // NVARCHAR(40)
-def config:schema:BillingPostalCode="string"    // NVARCHAR(10)
-def config:schema:Total="decimal(64, 2)"        // NUMERIC(10,2)    NOT NULL
+def config:schema:invoice_id="int"            // INTEGER          NOT NULL  PK
+def config:schema:customer_id="int"           // INTEGER          NOT NULL
+def config:schema:invoice_date="datetime"     // DATETIME         NOT NULL
+def config:schema:billing_address="string"    // NVARCHAR(70)
+def config:schema:billing_city="string"       // NVARCHAR(40)
+def config:schema:billing_state="string"      // NVARCHAR(40)
+def config:schema:billing_country="string"    // NVARCHAR(40)
+def config:schema:billing_postal_code="string"  // NVARCHAR(10)
+def config:schema:total="decimal(64, 2)"      // NUMERIC(10,2)    NOT NULL
 
 def config:syntax:header_row=1
 def config:data = mydata

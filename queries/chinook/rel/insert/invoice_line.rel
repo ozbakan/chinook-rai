@@ -1,8 +1,8 @@
-def config:schema:InvoiceLineId="int"           // INTEGER          NOT NULL  PK
-def config:schema:InvoiceId="int"               // INTEGER          NOT NULL
-def config:schema:TrackId="int"                 // INTEGER          NOT NULL
-def config:schema:UnitPrice="decimal(64, 2)"    // NUMERIC(10,2)    NOT NULL
-def config:schema:Quantity="int"                // INTEGER          NOT NULL
+def config:schema:invoice_line_id="int"           // INTEGER          NOT NULL  PK
+def config:schema:invoice_id="int"                // INTEGER          NOT NULL
+def config:schema:track_id="int"                  // INTEGER          NOT NULL
+def config:schema:unit_price="decimal(64, 2)"     // NUMERIC(10,2)    NOT NULL
+def config:schema:quantity="int"                  // INTEGER          NOT NULL
 
 def config:syntax:header_row=1
 def config:data = mydata

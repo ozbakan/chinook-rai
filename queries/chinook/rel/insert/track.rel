@@ -1,12 +1,12 @@
-def config:schema:TrackId="int"                 // INTEGER          NOT NULL PK
-def config:schema:Name="string"                 // NVARCHAR(200)    NOT NULL
-def config:schema:AlbumId="int"                 // INTEGER                   FK
-def config:schema:MediaTypeId="int"             // INTEGER          NOT NULL FK
-def config:schema:GenreId="int"                 // INTEGER                   FK
-def config:schema:Composer="string"             // NVARCHAR(220)
-def config:schema:Milliseconds="int"            // INTEGER          NOT NULL
-def config:schema:Bytes="int"                   // INTEGER
-def config:schema:UnitPrice="decimal(64, 2)"    // NUMERIC(10,2)
+def config:schema:track_id="int"               // INTEGER          NOT NULL PK
+def config:schema:name="string"                // NVARCHAR(200)    NOT NULL
+def config:schema:album_id="int"               // INTEGER                   FK
+def config:schema:media_type_id="int"          // INTEGER          NOT NULL FK
+def config:schema:genre_id="int"               // INTEGER                   FK
+def config:schema:composer="string"            // NVARCHAR(220)
+def config:schema:milliseconds="int"           // INTEGER          NOT NULL
+def config:schema:bytes="int"                  // INTEGER
+def config:schema:unit_price="decimal(64, 2)"  // NUMERIC(10,2)
 
 def config:syntax:header_row=1
 def config:data = mydata
