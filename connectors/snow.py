@@ -1,15 +1,17 @@
 import configparser
 import csv
 import os
+import logging
 from pathlib import Path
 
 import snowflake.connector
 
+logger = logging.getLogger(__name__)
 
 class SnowflakeConnector:
-    def __init__(self, cfg_filepath):
+    def __init__(self):
         config = configparser.ConfigParser()
-        config.read(cfg_filepath)
+        config.read(os.path.join(str(Path.home()), '.snowflake/config'))
         self.cfg = config['default']
 
     def execute(self, sql_file):
@@ -78,6 +80,7 @@ class SnowflakeConnector:
             connection.close()
 
     def create_chinook_db(self):
+        logger.info("Creating chinook db in Snowflake...")
         self.execute_script('queries/chinook/sql/snowflake/create.sql')
         tables = ['album', 'artist', 'customer', 'employee', 'genre',
                   'invoice_line', 'invoice', 'media_type',
@@ -87,9 +90,8 @@ class SnowflakeConnector:
 
     def insert(self, table, csv_directory):
 
-        suffix = '.csv'
-        csv_file = os.path.join(csv_directory, table + suffix)
-
+        csv_file = csv_directory + '/' + table + '.csv'
+        logger.info("Installing: %s" % csv_file)
         connection = snowflake.connector.connect(
             user=self.cfg['user'],
             password=self.cfg['password'],
@@ -149,5 +151,5 @@ class SnowflakeConnector:
 
 
 if __name__ == '__main__':
-    sc = SnowflakeConnector(os.path.join(str(Path.home()), '.snowflake/config'))
-    print(sc.execute('queries/chinook/sql/snowflake/9a.sql'))
+    sc = SnowflakeConnector()
+    sc.create_chinook_db()

@@ -1,6 +1,8 @@
 import csv
 import os
 import sqlite3
+import logging
+logger = logging.getLogger(__name__)
 
 
 class SQLiteConnector:
@@ -8,6 +10,7 @@ class SQLiteConnector:
         self.db_filepath = db_filepath
 
     def create_chinook_db(self):
+        logger.info("Creating chinook db in SQLite...")
         self.execute_script('queries/chinook/sql/sqlite/create.sql')
         tables = ['album', 'artist', 'customer', 'employee', 'genre',
                   'invoice_line', 'invoice', 'media_type',
@@ -51,8 +54,8 @@ class SQLiteConnector:
 
     def insert(self, table, csv_directory):
 
-        suffix = '.csv'
-        csv_file = os.path.join(csv_directory, table + suffix)
+        csv_file = csv_directory + '/' + table + '.csv'
+        logger.info("Installing: %s" % csv_file)
 
         connection = None
         try:

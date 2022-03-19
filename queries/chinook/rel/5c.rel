@@ -1,8 +1,0 @@
-// Author:      Tolga Ozbakan
-// Date:        02-15-2022
-// Description: Selects invoices that between two dates.
-
-def output(id, date, total) = 
-    invoice_date(id, date, total)
-    and date >= 2009-01-01
-    and date <= 2009-12-31

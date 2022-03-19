@@ -3,8 +3,8 @@
 // Description:  Selects invoices that contain the letter 'ß' in address.
 
 def output(id, address, total) =
-    invoice_csv(:InvoiceId, pos, id)
-    and invoice_csv(:BillingAddress, pos, address)
-    and invoice_csv(:Total, pos, total)
+    invoice_csv(:invoice_id, pos, id)
+    and invoice_csv(:billing_address, pos, address)
+    and invoice_csv(:total, pos, total)
     and like_match("%ß%", address)
     from pos

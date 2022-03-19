@@ -1,14 +1,16 @@
 import csv
-import os
+import logging
 
 import duckdb
 
+logger = logging.getLogger(__name__)
 
 class DuckDBConnector:
     def __init__(self, db_filepath):
         self.db_filepath = db_filepath
 
     def create_chinook_db(self):
+        logger.info("Creating chinook db in DuckDB...")
         self.execute_script('queries/chinook/sql/duckdb/create.sql')
         tables = ['album', 'artist', 'customer', 'employee', 'genre',
                   'invoice_line', 'invoice', 'media_type',
@@ -52,8 +54,8 @@ class DuckDBConnector:
 
     def insert(self, table, csv_directory):
 
-        suffix = '.csv'
-        csv_file = os.path.join(csv_directory, table + suffix)
+        csv_file = csv_directory + '/' + table + '.csv'
+        logger.info("Installing: %s" % csv_file)
 
         connection = None
         try:

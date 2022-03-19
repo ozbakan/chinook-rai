@@ -1,6 +1,5 @@
 import os
 import unittest
-from pathlib import Path
 
 from connectors.duck import DuckDBConnector
 from connectors.snow import SnowflakeConnector
@@ -12,8 +11,7 @@ class QueryTester(unittest.TestCase):
     def setUp(self):
         self.duckdb = DuckDBConnector('data/chinook/duckdb/chinook.db')
         self.sqlite = SQLiteConnector('data/chinook/sqlite/chinook.db')
-        self.snowflake = SnowflakeConnector(os.path.join(str(Path.home()),
-                                                         '.snowflake/config'))
+        self.snowflake = SnowflakeConnector()
 
         self.suffix = '.sql'
         self.duckdb_directory = 'queries/chinook/sql/duckdb'
