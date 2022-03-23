@@ -3,7 +3,7 @@
 -- Description:   Computes largest sale between 2009 and 2011 and returns 
 -- invoices that are higher than that value in the following years.
 
-select date(invoice_date),
+select strftime('%Y-%m-%d', invoice_date),
     billing_city,
     total
 from invoice

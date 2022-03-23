@@ -3,7 +3,7 @@
 -- Description:   Returns invoices on the invoice dates of multiple invoice ids.
 
 select invoice_id,
-    strftime(invoice_date::date, '%Y-%m-%d'),
+    strftime(invoice_date, '%Y-%m-%d'),
     billing_address,
     billing_city
 from invoice

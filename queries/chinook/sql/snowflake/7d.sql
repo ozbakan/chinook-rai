@@ -4,6 +4,6 @@
 
 select last_name,
     first_name,
-    to_char(birth_date::date, '%Y-%m-%d'),
-    datediff('year', birth_date::date, current_date)
+    to_char(birth_date, '%Y-%m-%d'),
+    datediff('year', birth_date, current_date)
 from employee

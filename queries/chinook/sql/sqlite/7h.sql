@@ -2,7 +2,7 @@
 -- Date:          02-11-2022
 -- Description:   Computes average subtotals for invoice dates and countries.
 
-select date(invoice_date),
+select strftime('%Y-%m-%d', invoice_date),
     billing_country,
     avg(total)
 from invoice

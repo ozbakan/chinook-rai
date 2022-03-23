@@ -6,7 +6,7 @@
 select e.first_name,
     e.last_name,
     e.employee_id,
-    to_char(hire_date::date, '%Y-%m-%d'),
+    to_char(e.hire_date, '%Y-%m-%d'),
     c.first_name,
     c.last_name,
     c.support_rep_id,

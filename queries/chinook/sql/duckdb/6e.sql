@@ -6,7 +6,7 @@
 select e.first_name,
     e.last_name,
     e.employee_id,
-    strftime(hire_date::date, '%Y-%m-%d'),
+    strftime(e.hire_date, '%Y-%m-%d'),
     c.first_name,
     c.last_name,
     c.support_rep_id,

@@ -14,7 +14,7 @@ invoices as (
     select
         invoice_id as invoice_id,
         customer_id as customer_id,
-        date(invoice_date) as invoice_date,
+        invoice_date as invoice_date,
         total
 
     from invoice
@@ -43,8 +43,8 @@ final as (
         customers.customer_id,
         customers.first_name,
         customers.last_name,
-        customer_invoices.first_invoice_date,
-        customer_invoices.most_recent_invoice_date,
+        strftime('%Y-%m-%d', customer_invoices.first_invoice_date),
+        strftime('%Y-%m-%d', customer_invoices.most_recent_invoice_date),
         coalesce(customer_invoices.number_of_invoices, 0) as number_of_invoices
 
     from customers

@@ -3,7 +3,7 @@
 -- Description:   Returns invoices on the invoice dates of multiple invoice ids.
 
 select invoice_id,
-    to_char(invoice_date::date, '%Y-%m-%d'),
+    to_char(invoice_date, '%Y-%m-%d'),
     billing_address,
     billing_city
 from invoice

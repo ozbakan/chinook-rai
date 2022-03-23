@@ -3,7 +3,7 @@
 -- Description:   Computes largest sale between 2009 and 2011 and returns 
 -- invoices that are higher than that value in the following years.
 
-select to_char(invoice_date::date, '%Y-%m-%d'),
+select to_char(invoice_date, '%Y-%m-%d'),
     billing_city,
     total::float8
 from invoice

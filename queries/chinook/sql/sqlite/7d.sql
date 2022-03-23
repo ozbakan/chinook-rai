@@ -5,5 +5,5 @@
 select last_name,
     first_name,
     strftime('%Y-%m-%d', birth_date),
-    date('now') - date(birth_date)
+    date('now') - birth_date
 from employee

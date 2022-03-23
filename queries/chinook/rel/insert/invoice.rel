@@ -1,6 +1,6 @@
 def config:schema:invoice_id="int"            // INTEGER          NOT NULL  PK
 def config:schema:customer_id="int"           // INTEGER          NOT NULL
-def config:schema:invoice_date="datetime"     // DATETIME         NOT NULL
+def config:schema:invoice_date="date"         // DATE             NOT NULL
 def config:schema:billing_address="string"    // NVARCHAR(70)
 def config:schema:billing_city="string"       // NVARCHAR(40)
 def config:schema:billing_state="string"      // NVARCHAR(40)
