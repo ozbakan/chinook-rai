@@ -1,0 +1,11 @@
+// Author:       Tolga Ozbakan
+// Date:         02-15-2022
+// Description:  Shows the artists that have no albums.
+
+def output(name) =
+    not (artist_csv:name(pos_a, name)
+        and artist_csv:artist_id(pos_a, artist_id)
+        and album_csv:title(pos_b, title)
+        and album_csv:artist_id(pos_b, artist_id)
+        from pos_a, pos_b, artist_id, title)
+    and artist_csv:name(_, name)

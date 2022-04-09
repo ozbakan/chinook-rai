@@ -152,4 +152,4 @@ class SnowflakeConnector:
 
 if __name__ == '__main__':
     sc = SnowflakeConnector()
-    sc.create_chinook_db()
+    print(sc.execute('queries/chinook/sql/snowflake/6c.sql'))

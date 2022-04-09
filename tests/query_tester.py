@@ -213,5 +213,15 @@ class RelTester(unittest.TestCase):
         b = self.b.execute(os.path.join(self.b_dir, '6b.sql'))
         self.assertEqual(a, b)
 
+    def test_select_tuples_with_null(self):
+        a = self.a.execute(os.path.join(self.a_dir, '6d.rel'))
+        b = self.b.execute(os.path.join(self.b_dir, '6d.sql'))
+        self.assertEqual(a, b)
+
+    def test_multiple_join(self):
+        a = self.a.execute(os.path.join(self.a_dir, '6e.rel'))
+        b = self.b.execute(os.path.join(self.b_dir, '6e.sql'))
+        self.assertEqual(a, b)
+
 if __name__ == '__main__':
     unittest.main()

@@ -1,0 +1,26 @@
+// Author:        Tolga Ozbakan
+// Date:          02-10-2022
+// Description:   Joins multiple relations. Shows the employees responsible for 
+// the highest invoice totals.
+
+def output(employee_first_name, 
+           employee_last_name, 
+           employee_id, 
+           hire_date, 
+           customer_first_name,
+           customer_last_name,
+           support_rep_id,
+           customer_id,
+           total) =
+    employee_csv:first_name(pos_e, employee_first_name)
+    and employee_csv:last_name(pos_e, employee_last_name)
+    and employee_csv:hire_date(pos_e, hire_date)
+    and employee_csv:employee_id(pos_e, employee_id)
+    and customer_csv:support_rep_id(pos_c, support_rep_id)
+    and employee_id = support_rep_id
+    and customer_csv:first_name(pos_c, customer_first_name)
+    and customer_csv:last_name(pos_c, customer_last_name)
+    and customer_csv:customer_id(pos_c, customer_id)
+    and invoice_csv:customer_id(pos_i, customer_id)
+    and invoice_csv:total(pos_i, total)
+    from pos_e, pos_c, pos_i

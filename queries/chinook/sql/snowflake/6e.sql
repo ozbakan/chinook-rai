@@ -15,7 +15,3 @@ select e.first_name,
 from invoice as i
     inner join customer as c on i.customer_id = c.customer_id
     inner join employee as e on c.support_rep_id = e.employee_id
-order by
-    i.total desc,
-    e.hire_date desc
-limit 10
