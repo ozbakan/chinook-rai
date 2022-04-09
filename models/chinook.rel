@@ -3,7 +3,7 @@
 // TODO: It is good practice to ensure that this key is unique using an 
 // integrity constraint.
 
-def artist(id, name) =
-    artist_csv:artist_id(pos, id)
-    and artist_csv:name(pos, name)
+def genre(id, name) =
+    genre_csv:genre_id(pos, id)
+    and genre_csv:name(pos, name)
 from pos

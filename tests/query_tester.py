@@ -188,6 +188,11 @@ class RelTester(unittest.TestCase):
         b = self.b.execute(os.path.join(self.b_dir, '5b.sql'))
         self.assertEqual(a, b)
 
+    def test_dates_between(self):
+        a = self.a.execute(os.path.join(self.a_dir, '5c.rel'))
+        b = self.b.execute(os.path.join(self.b_dir, '5c.sql'))
+        self.assertEqual(a, b)
+
 
 if __name__ == '__main__':
     unittest.main()

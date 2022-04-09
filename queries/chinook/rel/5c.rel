@@ -1,0 +1,11 @@
+// Author:       Tolga Ozbakan
+// Date:         02-15-2022
+// Description:  Selects invoices that contain the letter 'ß' in address.
+
+def output(id, date, total) =
+    invoice_csv:invoice_id(pos, id)
+    and invoice_csv:invoice_date(pos, date)
+    and invoice_csv:total(pos, total)
+    and date >= 2009-01-01
+    and date <= 2009-12-31
+    from pos
