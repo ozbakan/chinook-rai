@@ -213,6 +213,11 @@ class RelTester(unittest.TestCase):
         b = self.b.execute(os.path.join(self.b_dir, '6b.sql'))
         self.assertEqual(a, b)
 
+    def test_left_join(self):
+        a = self.a.execute(os.path.join(self.a_dir, '6c.rel'))
+        b = self.b.execute(os.path.join(self.b_dir, '6c.sql'))
+        self.assertEqual(a, b)
+
     def test_select_tuples_with_null(self):
         a = self.a.execute(os.path.join(self.a_dir, '6d.rel'))
         b = self.b.execute(os.path.join(self.b_dir, '6d.sql'))
@@ -233,6 +238,15 @@ class RelTester(unittest.TestCase):
         b = self.b.execute(os.path.join(self.b_dir, '7d.sql'))
         self.assertEqual(a, b)
 
+    def test_basic_groupby(self):
+        a = self.a.execute(os.path.join(self.a_dir, '7e.rel'))
+        b = self.b.execute(os.path.join(self.b_dir, '7e.sql'))
+        self.assertEqual(a, b)
+
+    def test_filter_aggregate_tuples_with_having(self):
+        a = self.a.execute(os.path.join(self.a_dir, '7f.rel'))
+        b = self.b.execute(os.path.join(self.b_dir, '7f.sql'))
+        self.assertEqual(a, b)
 
 if __name__ == '__main__':
     unittest.main()

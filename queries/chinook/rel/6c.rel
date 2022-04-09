@@ -1,0 +1,22 @@
+// Author:      Tolga Ozbakan
+// Date:        02-09-2022
+// Description: Selects artists and their albums using left join.There is 
+// one-to-many relationship between 275 artists and 347 albums. Some artists
+// have multiple albums, but there are 71 artists (e.g. João Gilberto, id of 28)
+// without any albums. This left join will include all artists, whether they
+// have an album or not.
+
+def output(name, title) =
+    artist_csv:name(pos_a, name)
+    and artist_csv:artist_id(pos_a, artist_id)
+    and album_csv:title(pos_b, title)
+    and album_csv:artist_id(pos_b, artist_id)
+    from pos_a, pos_b, artist_id
+
+def output(name) = 
+    not (artist_csv:name(pos_a, name)
+        and artist_csv:artist_id(pos_a, artist_id)
+        and album_csv:title(pos_b, title)
+        and album_csv:artist_id(pos_b, artist_id)
+        from pos_a, pos_b, artist_id, title)
+    and artist_csv:name(_, name)

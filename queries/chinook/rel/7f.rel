@@ -1,0 +1,15 @@
+// Author:        Tolga Ozbakan
+// Date:          02-11-2022
+// Description:   Computes average subtotals for cities beginning with 'B' and
+// filters aggregate results.
+
+def city_invoice_id_total(c, i, t) = 
+    invoice_csv:billing_city(p, c)
+    and invoice_csv:invoice_id(p, i)
+    and invoice_csv:total(p, t)
+    and like_match("B%", c)
+    from p
+
+def output(c, avg) = 
+    avg = average[city_invoice_id_total[c]]
+    and avg > decimal[64, 2, 5.50]
