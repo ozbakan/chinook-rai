@@ -1,6 +1,6 @@
 -- Author:        Tolga Ozbakan
 -- Date:          02-09-2022
--- Description:   Selects invoices that between two dates.
+-- Description:   Selects invoices that are between two dates.
 
 select
     invoice_id,
