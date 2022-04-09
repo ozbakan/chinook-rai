@@ -1,0 +1,11 @@
+// Author:        Tolga Ozbakan
+// Date:          02/11/2022
+// Description:   Concatenates the first and last names of customers in the USA.
+
+def output(name) = 
+    customer_csv:first_name(pos, first_name)
+    and customer_csv:last_name(pos, last_name)
+    and customer_csv:country(pos, country)
+    and country = "USA"
+    and name = concat[concat[first_name, " "], last_name]
+    from pos, first_name, last_name, country
