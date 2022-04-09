@@ -1,0 +1,14 @@
+// Author:       Tolga Ozbakan
+// Date:         02-15-2022
+// Description:  Joins relations. This will produce 412 records, one for 
+//               each invoice.
+
+def output(last_name, first_name, email, customer_id, invoice_id, total) =
+    customer_csv:last_name(pos_c, last_name)
+    and customer_csv:first_name(pos_c, first_name)
+    and customer_csv:email(pos_c, email)
+    and customer_csv:customer_id(pos_c, customer_id)
+    and invoice_csv:customer_id(pos_i, customer_id)
+    and invoice_csv:invoice_id(pos_i, invoice_id)
+    and invoice_csv:total(pos_i, total)
+    from pos_c, pos_i
