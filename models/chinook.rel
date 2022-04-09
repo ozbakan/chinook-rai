@@ -1,44 +1,9 @@
-// Let's transform the EDB data before using it in rest of the model. Note that
-// we could have done this transformation before storing the CSV files as EDB. 
-
-// The first four relations are very simple; they relate an id to a name. We do
-// this by replacing the FilePos row key in the CSV file with the values in the 
-// id columns namely, artist_id, genre_id, media_type_id and play_list_id. In doing
-// we assume that the key is unique to each row. 
+// Let's transform the EDB data before using it in rest of the model. 
 
 // TODO: It is good practice to ensure that this key is unique using an 
 // integrity constraint.
 
-def artist(:name, id, name) =
-    artist_csv(:artist_id, pos, id) 
-    and artist_csv(:name, pos, name) 
-    from pos
-
-def genre(:name, id, name) = 
-    genre_csv(:genre_id, pos, id)
-    and genre_csv(:name, pos, name)
-    from pos
-
-def media_type(:name, id, name) = 
-    media_type_csv(:media_type_id, pos, id)
-    and media_type_csv(:name, pos, name)
-    from pos
-
-def playlist(:name, id, name) = 
-    playlist_csv(:playlist_id, pos, id)
-    and playlist_csv(:name, pos, name)
-    from pos
-
-// Now we will model the album relation with two subrelations, first one 
-// relating the title to the id and the next one relating the artist id to 
-// the album id.
-
-def album(:title, id, title) =
-    album_csv(:album_id, pos, id) 
-    and album_csv(:title, pos, title) 
-    from pos
-
-def album(:artist_id, id, artist_id) =
-    album_csv(:album_id, pos, id) 
-    and album_csv(:artist_id, pos, artist_id)
-    from pos
+def artist(id, name) =
+    artist_csv:artist_id(pos, id)
+    and artist_csv:name(pos, name)
+from pos

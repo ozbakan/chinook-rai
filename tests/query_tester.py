@@ -173,7 +173,7 @@ class RelTester(unittest.TestCase):
         b = self.b.execute(os.path.join(self.b_dir, '4a.sql'))
         self.assertEqual(a, b)
 
-    def test_select_binary_tuples(self):
+    def test_select_order_by_limit_tuples(self):
         a = self.a.execute(os.path.join(self.a_dir, '4b.rel'))
         b = self.b.execute(os.path.join(self.b_dir, '4b.sql'))
         self.assertEqual(a, b)
