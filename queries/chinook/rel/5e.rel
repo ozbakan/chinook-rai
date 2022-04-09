@@ -1,0 +1,15 @@
+// Author:      Tolga Ozbakan
+// Date:        02-09-2022
+// Description: Creates a purchase type column based on invoice total.
+
+def low = decimal[64, 2, 1.99]
+def mid = decimal[64, 2, 2.00]
+def high = decimal[64, 2, 6.99]
+
+def output(id, total, result) = 
+    invoice_csv:invoice_id(pos, id)
+    and invoice_csv:total(pos, total)
+    and (total <= low and result = "Low"
+        or (total >= mid and total <= high and result = "Mid")
+        or (total > high] and result = "High"))
+    from pos

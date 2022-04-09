@@ -198,6 +198,11 @@ class RelTester(unittest.TestCase):
         b = self.b.execute(os.path.join(self.b_dir, '5d.sql'))
         self.assertEqual(a, b)
 
+    def test_tuple_element_by_case(self):
+        a = self.a.execute(os.path.join(self.a_dir, '5e.rel'))
+        b = self.b.execute(os.path.join(self.b_dir, '5e.sql'))
+        self.assertEqual(a, b)
+
     def test_inner_join_a(self):
         a = self.a.execute(os.path.join(self.a_dir, '6a.rel'))
         b = self.b.execute(os.path.join(self.b_dir, '6a.sql'))

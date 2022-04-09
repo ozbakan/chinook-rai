@@ -5,8 +5,8 @@
 select invoice_id,
     total::float8,
     case
-        when total < 1.99 then 'Low'
-        when total between 2.00 and 6.99 then 'Middle'
-        else 'High'
+        when total <= 1.99 then 'Low'
+        when total between 2.00 and 6.99 then 'Mid'
+        when total > 6.99 then 'High'
     end as result
 from invoice
