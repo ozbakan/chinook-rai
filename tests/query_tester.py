@@ -173,7 +173,7 @@ class RelTester(unittest.TestCase):
         b = self.b.execute(os.path.join(self.b_dir, '4a.sql'))
         self.assertEqual(a, b)
 
-    def test_select_order_by_limit_tuples(self):
+    def test_select_binary_tuples(self):
         a = self.a.execute(os.path.join(self.a_dir, '4b.rel'))
         b = self.b.execute(os.path.join(self.b_dir, '4b.sql'))
         self.assertEqual(a, b)
@@ -188,19 +188,24 @@ class RelTester(unittest.TestCase):
         b = self.b.execute(os.path.join(self.b_dir, '5b.sql'))
         self.assertEqual(a, b)
 
-    def test_dates_between(self):
+    def test_select_dates_between(self):
         a = self.a.execute(os.path.join(self.a_dir, '5c.rel'))
         b = self.b.execute(os.path.join(self.b_dir, '5c.sql'))
         self.assertEqual(a, b)
 
-    def test_specific_date(self):
+    def test_select_specific_date(self):
         a = self.a.execute(os.path.join(self.a_dir, '5d.rel'))
         b = self.b.execute(os.path.join(self.b_dir, '5d.sql'))
         self.assertEqual(a, b)
 
-    def test_inner_join(self):
+    def test_inner_join_a(self):
         a = self.a.execute(os.path.join(self.a_dir, '6a.rel'))
         b = self.b.execute(os.path.join(self.b_dir, '6a.sql'))
+        self.assertEqual(a, b)
+
+    def test_inner_join_b(self):
+        a = self.a.execute(os.path.join(self.a_dir, '6b.rel'))
+        b = self.b.execute(os.path.join(self.b_dir, '6b.sql'))
         self.assertEqual(a, b)
 
 if __name__ == '__main__':

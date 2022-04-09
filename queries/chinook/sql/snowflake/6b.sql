@@ -6,8 +6,9 @@
 -- without any albums. This inner join will ignore the artists without albums
 -- so we will create 347 rows.
 
-select a.name,
+select
+    a.name,
     b.title
-from artist as a
-    inner join album as b 
-    on a.artist_id = b.artist_id
+from
+    artist as a
+    inner join album as b on a.artist_id = b.artist_id
