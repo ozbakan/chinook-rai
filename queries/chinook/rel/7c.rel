@@ -1,0 +1,17 @@
+// Author:        Tolga Ozbakan
+// Date:          02-11-2022
+// Description:   Truncates postal code to five characters.
+
+def output(postal_code, truncated_postal_code) = 
+    customer_csv:postal_code(pos, postal_code)
+    and customer_csv:country(pos, "USA")
+    and truncated_postal_code = substring[postal_code, 1, 5]
+    from pos
+
+// We do this because Rel drops records with string size less than 5 
+def output(postal_code, truncated_postal_code) = 
+    customer_csv:postal_code(pos, postal_code)
+    and customer_csv:country(pos, "USA")
+    and truncated_postal_code = postal_code
+    and num_chars[postal_code] = 4
+    from pos

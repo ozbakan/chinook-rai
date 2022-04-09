@@ -233,6 +233,11 @@ class RelTester(unittest.TestCase):
         b = self.b.execute(os.path.join(self.b_dir, '7b.sql'))
         self.assertEqual(a, b)
 
+    def test_tuple_truncation(self):
+        a = self.a.execute(os.path.join(self.a_dir, '7c.rel'))
+        b = self.b.execute(os.path.join(self.b_dir, '7c.sql'))
+        self.assertEqual(a, b)
+
     def test_subtract_dates(self):
         a = self.a.execute(os.path.join(self.a_dir, '7d.rel'))
         b = self.b.execute(os.path.join(self.b_dir, '7d.sql'))
