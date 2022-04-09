@@ -253,5 +253,10 @@ class RelTester(unittest.TestCase):
         b = self.b.execute(os.path.join(self.b_dir, '7f.sql'))
         self.assertEqual(a, b)
 
+    def test_yearly_averages(self):
+        a = self.a.execute(os.path.join(self.a_dir, '7g.rel'))
+        b = self.b.execute(os.path.join(self.b_dir, '7g.sql'))
+        self.assertEqual(a, b)
+
 if __name__ == '__main__':
     unittest.main()

@@ -1,0 +1,14 @@
+// Author:        Tolga Ozbakan
+// Date:          02-11-2022
+// Description:   Computes yearly invoice averages in the USA.
+
+def invoice_id_total(s, i, t) = 
+    invoice_csv:billing_country(p, "USA")
+    and y = date_year[d]
+    and s = string[y]
+    and invoice_csv:invoice_date(p, d)
+    and invoice_csv:invoice_id(p, i)
+    and invoice_csv:total(p, t)
+    from p, d, y
+
+def output[d] = average[invoice_id_total[d]]
