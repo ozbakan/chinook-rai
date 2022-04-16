@@ -98,14 +98,20 @@ class RaiConnector:
                 # interested in the key of 'columns' which holds a list of lists
                 output = i['columns']
 
-                # Create a list of tuples with this output and append to outputs
+                # Let's create a list of tuples with this output and append it 
+                # to out outputs list
                 outputs.append(list(zip(*output)))
 
-                # Let's take a note of arities
+                # Let's also take a note of arities
                 arities.append(len(output))
-                
+        
+            # In most cases we have a single output, let's simply return it
+            if len(outputs) == 1:
+                return set(outputs[0])
+
+            # But we may have multiple outputs too, let's merge them
             result = set()
-            # Now let's loop over the arities list
+            # Loop over the arities list
             for a in range(len(arities)):
                 if arities[a] != max(arities):
                     # Fill in the missing elements with None
