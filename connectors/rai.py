@@ -77,7 +77,9 @@ class RaiConnector:
                 data = file.read()
             with open(queryfile, 'r') as file:
                 query = file.read()
-            response = api.query(ctx, self.database, self.engine_name, query, inputs={"mydata": data},
+            response = api.query(ctx, self.database, 
+                                 self.engine_name, query, 
+                                 inputs={"mydata": data},
                                  readonly=False)
 
 
@@ -86,10 +88,38 @@ class RaiConnector:
         with open(queryfile, 'r', encoding='utf-8') as file:
             query = file.read()
             response = api.query(ctx, self.database, self.engine_name, query)
-            columns = response['output'][0]['columns']
-            return(set(list(zip(*columns))))
+
+            outputs = []
+            arities = []
+            # Response is a dictionary, we are interested in the 'output' key
+            # which holds a list of dictionaries
+            for i in response['output']:
+                # Now we are iterating over a list of dictionaries, we are
+                # interested in the key of 'columns' which holds a list of lists
+                output = i['columns']
+
+                # Create a list of tuples with this output and append to outputs
+                outputs.append(list(zip(*output)))
+
+                # Let's take a note of arities
+                arities.append(len(output))
+                
+            result = set()
+            # Now let's loop over the arities list
+            for a in range(len(arities)):
+                if arities[a] != max(arities):
+                    # Fill in the missing elements with None
+                    for _ in range(max(arities) - arities[a]):
+                        for t in outputs[a]:
+                            result.add((*t, None))
+                else:
+                    # Add the tuples to result set
+                    for t in outputs[a]:
+                        result.add(t)
+
+            return result
 
 
 if __name__ == '__main__':
     rc = RaiConnector()
-    rc.create_chinook_db()
+    print(rc.execute("queries/chinook/rel/6c.rel"))
