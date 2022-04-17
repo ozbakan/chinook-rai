@@ -7,6 +7,6 @@ select invoice_id,
     case
         when total <= 1.99 then 'Low'
         when total between 2.00 and 6.99 then 'Mid'
-        when total > 6.99 then 'High'
+        else 'High'
     end as result
 from invoice

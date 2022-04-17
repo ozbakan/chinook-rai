@@ -1,0 +1,10 @@
+// Author:        Tolga Ozbakan
+// Date:          02-11-2022
+// Description:   Returns invoices less that are below the average.
+
+def output(i, a, t) = 
+    invoice_csv:invoice_id(p, i)
+    and invoice_csv:billing_address(p, a)
+    and invoice_csv:total(p, t)
+    and t < average[invoice_csv:total]
+    from p

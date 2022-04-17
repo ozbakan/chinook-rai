@@ -6,10 +6,16 @@ def low = decimal[64, 2, 1.99]
 def mid = decimal[64, 2, 2.00]
 def high = decimal[64, 2, 6.99]
 
-def output(id, total, result) = 
+def id_total(id, total) = 
     invoice_csv:invoice_id(pos, id)
     and invoice_csv:total(pos, total)
-    and (total <= low and result = "Low"
-        or (total >= mid and total <= high and result = "Mid")
-        or (total > high] and result = "High"))
     from pos
+
+// Things to notice:
+// The arity of output is arity(LHS) + arity(RHS) which is 2 + 1 = 3
+// Arity of RHS is 1 because of the expression that computes a string
+def output[id, total] = 
+    id_total(id, total), 
+    ((total <= low, "Low") 
+     ; (total >= mid and total <= high,  "Mid") 
+     ; (total > high, "High"))

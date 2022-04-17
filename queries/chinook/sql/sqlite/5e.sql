@@ -5,8 +5,8 @@
 select invoice_id,
     total,
     case
-        when total < 1.99 then 'Low'
-        when total between 2.00 and 6.99 then 'Middle'
+        when total <= 1.99 then 'Low'
+        when total between 2.00 and 6.99 then 'Mid'
         else 'High'
     end as 'Purchase Type'
 from invoice

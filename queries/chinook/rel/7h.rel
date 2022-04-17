@@ -1,0 +1,12 @@
+// Author:        Tolga Ozbakan
+// Date:          02-11-2022
+// Description:   Computes average subtotals for invoice dates and countries.
+
+def date_country_id_total(d, c, i, t) = 
+    invoice_csv:invoice_date(p, d)
+    and invoice_csv:billing_country(p, c)
+    and invoice_csv:invoice_id(p, i)
+    and invoice_csv:total(p, t)
+    from p
+
+def output = d, c : average[date_country_id_total[d, c, i] from i]
