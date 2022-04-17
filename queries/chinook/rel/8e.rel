@@ -1,0 +1,12 @@
+// Author:        Tolga Ozbakan
+// Date:          02-11-2022
+// Description:   Returns tracks that are not in any of the invoices.
+
+def sold_tracks(i) = 
+    invoice_line_csv:track_id(p, i)
+    from p
+
+def output(i) = 
+    track_csv:track_id(p, i)
+    and not sold_tracks(i)
+    from p
