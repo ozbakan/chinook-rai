@@ -1,0 +1,17 @@
+// Author:        Tolga Ozbakan
+// Date:          02-11-2022
+// Description:   Returns invoices on the invoice dates of multiple invoice ids.
+
+def date(d) = 
+    invoice_csv:invoice_date(p, d)
+    and invoice_csv:invoice_id(p, i)
+    and {251; 252; 255}(i)
+    from p, i
+
+def output(i, d, a, c) =
+    invoice_csv:invoice_id(p, i)
+    and invoice_csv:invoice_date(p, d)
+    and invoice_csv:billing_address(p, a)
+    and invoice_csv:billing_city(p, c)
+    and date(d)
+    from p

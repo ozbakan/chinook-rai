@@ -278,5 +278,10 @@ class RelTester(unittest.TestCase):
         b = self.b.execute(os.path.join(self.b_dir, '8c.sql'))
         self.assertEqual(a, b)
 
+    def test_subquery_with_nested_where_clauses_and_with_in(self):
+        a = self.a.execute(os.path.join(self.a_dir, '8d.rel'))
+        b = self.b.execute(os.path.join(self.b_dir, '8d.sql'))
+        self.assertEqual(a, b)        
+
 if __name__ == '__main__':
     unittest.main()
