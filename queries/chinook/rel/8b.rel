@@ -1,0 +1,13 @@
+// Author:        Tolga Ozbakan
+// Date:          02-11-2022
+// Description:   Displays global average as a new element.
+
+def country_total(c, i, t) =
+    invoice_csv:invoice_id(p, i)
+    and invoice_csv:billing_country(p, c)
+    and invoice_csv:total(p, t)
+    from p
+
+def output[c] =                 // Arity of 1 + 2
+    average[country_total[c]],  // Arity of 1
+    average[invoice_csv:total]  // Arity of 1

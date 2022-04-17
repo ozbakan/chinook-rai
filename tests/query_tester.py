@@ -268,5 +268,10 @@ class RelTester(unittest.TestCase):
         b = self.b.execute(os.path.join(self.b_dir, '8a.sql'))
         self.assertEqual(a, b)        
 
+    def test_subquery_as_a_new_element(self):
+        a = self.a.execute(os.path.join(self.a_dir, '8b.rel'))
+        b = self.b.execute(os.path.join(self.b_dir, '8b.sql'))
+        self.assertEqual(a, b)
+
 if __name__ == '__main__':
     unittest.main()
