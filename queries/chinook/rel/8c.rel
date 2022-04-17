@@ -1,0 +1,16 @@
+// Author:        Tolga Ozbakan
+// Date:          02-11-2022
+// Description:   Computes largest sale between 2009 and 2011 and returns 
+// invoices that are higher than that value in the following years.
+
+def output(d, c, t) =
+    invoice_csv:invoice_date(p, d)
+    and invoice_csv:billing_city(p, c)
+    and invoice_csv:total(p, t)
+    and d >= 2012-01-01
+    and t > max[
+        pd, pt : invoice_csv:invoice_date(pp, pd)  // pp for past position
+        and invoice_csv:total(pp, pt)  // pd, pt for past date, past total 
+        and pd < 2012-01-01 from pp]
+    from p
+
