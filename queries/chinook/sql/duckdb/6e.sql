@@ -17,5 +17,5 @@ from invoice as i
     inner join employee as e on c.support_rep_id = e.employee_id
 order by
     i.total desc,
-    e.hire_date desc
+    e.hire_date asc
 limit 10
