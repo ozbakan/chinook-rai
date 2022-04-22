@@ -1,1 +1,27 @@
-// TODO
+def customers(i, f, l) = 
+    customer_csv:customer_id(p, i)
+    and customer_csv:first_name(p, f)
+    and customer_csv:last_name(p, l)
+    from p
+
+def invoices(ii, ci, d, t) =
+    invoice_csv:invoice_id(p, ii)
+    and invoice_csv:customer_id(p, ci)
+    and invoice_csv:invoice_date(p, d)
+    and invoice_csv:total(p, t)
+    from p
+
+def customer_invoices[ci] =
+    min[d : invoices(ii, ci, d, t) from ii, t],
+    max[d : invoices(ii, ci, d, t) from ii, t],
+    count[ii : invoices(ii, ci, d, t) from d, t]
+
+def output(ci, f, l, c, fd, ld) = 
+    customers(ci, f, l)
+    and customer_invoices(ci, fd, ld, c)
+
+def output(i, f, l, c) =
+    customers(i, f, l)
+    and not customer_invoices(i, _, _, _)
+    and c = 0
+    

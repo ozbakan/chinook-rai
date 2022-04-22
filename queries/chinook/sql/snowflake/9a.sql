@@ -43,9 +43,9 @@ final as (
         customers.customer_id,
         customers.first_name,
         customers.last_name,
+        coalesce(customer_invoices.number_of_invoices, 0) as number_of_invoices,
         to_char(customer_invoices.first_invoice_date, '%Y-%m-%d'),
-        to_char(customer_invoices.most_recent_invoice_date, '%Y-%m-%d'),
-        coalesce(customer_invoices.number_of_invoices, 0) as number_of_invoices
+        to_char(customer_invoices.most_recent_invoice_date, '%Y-%m-%d')
 
     from customers
 

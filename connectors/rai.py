@@ -115,9 +115,11 @@ class RaiConnector:
             for a in range(len(arities)):
                 if arities[a] != max(arities):
                     # Fill in the missing elements with None
-                    for _ in range(max(arities) - arities[a]):
-                        for t in outputs[a]:
-                            result.add((*t, None))
+                    for t in outputs[a]:
+                        l = list(t)
+                        for _ in range(max(arities) - arities[a]):
+                            l.append(None)
+                        result.add(tuple(l))
                 else:
                     # Add the tuples to result set
                     for t in outputs[a]:
@@ -128,4 +130,4 @@ class RaiConnector:
 
 if __name__ == '__main__':
     rc = RaiConnector()
-    print(rc.execute("queries/chinook/rel/8e.rel"))
+    print(rc.execute("queries/chinook/rel/9a.rel"))
