@@ -3,11 +3,23 @@
 // Description:   Returns tracks that are not in any of the invoices.
 // TODO: Add composer and name
 
+def tracks_with_composers(i) = 
+    track_csv:track_id(p, i)
+    and track_csv:composer(p, c)
+    from p, c
+
 def sold_tracks(i) = 
     invoice_line_csv:track_id(p, i)
     from p
 
+def output(i, c) = 
+    track_csv:track_id(p, i)
+    and track_csv:composer(p, c)
+    and not sold_tracks(i)
+    from p
+
 def output(i) = 
     track_csv:track_id(p, i)
+    and not tracks_with_composers(i)
     and not sold_tracks(i)
     from p
