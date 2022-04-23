@@ -10,3 +10,6 @@ def date_country_id_total(d, c, i, t) =
     from p
 
 def output = d, c : average[date_country_id_total[d, c, i] from i]
+
+def output[d, c] = 
+    average[date_country_id_total[d, c, i] from i]

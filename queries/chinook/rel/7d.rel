@@ -2,9 +2,16 @@
 // Date:          02-11-2022
 // Description:   Computes ages of employees.
 
+def output[last_name, first_name, birth_date] = 
+    employee_csv:last_name(pos, last_name),
+    employee_csv:first_name(pos, first_name),
+    employee_csv:birth_date(pos, birth_date),
+    datetime_year_UTC[datetime_now] - date_year[birth_date]
+    from pos
+
 def output(last_name, first_name, birth_date, age) = 
-    employee_csv:last_name(pos, last_name)
-    and employee_csv:first_name(pos, first_name)
-    and employee_csv:birth_date(pos, birth_date)
-    and age = datetime_year_UTC[datetime_now] - date_year[birth_date]
+    employee_csv:last_name(pos, last_name),
+    employee_csv:first_name(pos, first_name),
+    employee_csv:birth_date(pos, birth_date),
+    age = datetime_year_UTC[datetime_now] - date_year[birth_date]
     from pos

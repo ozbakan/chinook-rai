@@ -13,3 +13,6 @@ def city_invoice_id_total(c, i, t) =
 def output(c, avg) = 
     avg = average[city_invoice_id_total[c]]
     and avg > decimal[64, 2, 5.50]
+
+def output(c, avg in average[city_invoice_id_total[c]]) =
+    avg > decimal[64, 2, 5.50]

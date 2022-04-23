@@ -24,4 +24,3 @@ def output(i, f, l, c) =
     customers(i, f, l)
     and not customer_invoices(i, _, _, _)
     and c = 0
-    

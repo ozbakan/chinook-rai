@@ -152,4 +152,4 @@ class SnowflakeConnector:
 
 if __name__ == '__main__':
     sc = SnowflakeConnector()
-    print(sc.execute('queries/chinook/sql/snowflake/9a.sql'))
+    print(sc.execute('queries/chinook/sql/snowflake/5a.sql'))

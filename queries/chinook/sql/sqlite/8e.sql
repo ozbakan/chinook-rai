@@ -4,9 +4,14 @@
 -- TODO: Add composer and name
 
 
-select track_id
-from track
-where track_id not in (
-        select distinct track_id
-        from invoice_line
+select
+    track_id, composer
+from
+    track
+where
+    track_id not in (
+        select
+            distinct track_id
+        from
+            invoice_line
     )

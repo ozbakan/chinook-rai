@@ -130,4 +130,4 @@ class RaiConnector:
 
 if __name__ == '__main__':
     rc = RaiConnector()
-    print(rc.execute("queries/chinook/rel/9a.rel"))
+    print(rc.execute("queries/chinook/rel/8e.rel"))

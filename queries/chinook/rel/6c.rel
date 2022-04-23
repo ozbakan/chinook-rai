@@ -13,10 +13,6 @@ def output(name, title) =
     and album_csv:artist_id(pos_b, artist_id)
     from pos_a, pos_b, artist_id
 
-def output(name) = 
-    not (artist_csv:name(pos_a, name)
-        and artist_csv:artist_id(pos_a, artist_id)
-        and album_csv:title(pos_b, title)
-        and album_csv:artist_id(pos_b, artist_id)
-        from pos_a, pos_b, artist_id, title)
+def output(name) =
+    not (output(name, title) from title)
     and artist_csv:name(_, name)

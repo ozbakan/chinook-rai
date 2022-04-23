@@ -9,7 +9,8 @@ def config:schema:bytes="int"                  // INTEGER
 def config:schema:unit_price="decimal(64, 2)"  // NUMERIC(10,2)
 
 def config:syntax:header_row=1
-def config:data = mydata
+def config:syntax:escapechar='"'
+def config:data=mydata
 
 def delete[:track_csv] = track_csv
 def insert[:track_csv] = load_csv[config]

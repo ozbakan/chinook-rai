@@ -1,0 +1,12 @@
+// Author:        Tolga Ozbakan
+// Date:          02-10-2022
+// Description:   Basic aggregations, including counts of null elements.
+
+def output = 
+    sum[invoice_csv:total],
+    average[invoice_csv:total],
+    max[invoice_csv:total],
+    count[invoice_csv:invoice_id],
+    count[invoice_csv:total],
+    count[invoice_csv:billing_state],
+    count[invoice_csv:billing_postal_code]

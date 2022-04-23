@@ -1,6 +1,6 @@
 -- Author:      Tolga Ozbakan
 -- Date:        02-09-2022
--- Description: Creates a purchase type column based on invoice total.
+-- Description: Creates a purchase type column conditonally.
 
 select invoice_id,
     total,

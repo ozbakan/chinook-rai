@@ -8,5 +8,15 @@ def output(id, country, city, total, tax) =
     and invoice_csv:billing_city(pos, city)
     and invoice_csv:total(pos, total)
     and {"Belgium"; "France"}(country)
+    and {total * decimal[64, 2, 1.15]}(tax)
+    from pos
+
+/*
+def output(id, country in {"Belgium"; "France"}, city, total, tax) =
+    invoice_csv:invoice_id(pos, id)
+    and invoice_csv:billing_country(pos, country)
+    and invoice_csv:billing_city(pos, city)
+    and invoice_csv:total(pos, total)
     and tax = total * decimal[64, 2, 1.15]
     from pos
+*/

@@ -228,6 +228,11 @@ class RelTester(unittest.TestCase):
         b = self.b.execute(os.path.join(self.b_dir, '6e.sql'))
         self.assertEqual(a, b)
 
+    def test_basic_aggregations(self):
+        a = self.a.execute(os.path.join(self.a_dir, '7a.rel'))
+        b = self.b.execute(os.path.join(self.b_dir, '7a.sql'))
+        self.assertEqual(a, b)
+
     def test_tuple_concatenation(self):
         a = self.a.execute(os.path.join(self.a_dir, '7b.rel'))
         b = self.b.execute(os.path.join(self.b_dir, '7b.sql'))

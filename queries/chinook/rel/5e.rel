@@ -1,6 +1,6 @@
 // Author:      Tolga Ozbakan
 // Date:        02-09-2022
-// Description: Creates a purchase type column based on invoice total.
+// Description: Creates a purchase type column conditionally.
 
 def low = decimal[64, 2, 1.99]
 def mid = decimal[64, 2, 2.00]
@@ -19,3 +19,9 @@ def output[id, total] =
     ((total <= low, "Low") 
      ; (total >= mid and total <= high,  "Mid") 
      ; (total > high, "High"))
+
+def output(id, total, type) =
+    id_total(id, total),
+    (type = (total <= low, "Low")
+     ; type = (total >= mid and total <= high,  "Mid")
+     ; type = (total > high, "High"))

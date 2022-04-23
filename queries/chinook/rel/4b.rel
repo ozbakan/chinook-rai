@@ -3,8 +3,17 @@
 // Description: Selects N binary tuples from relation sorted by element
 // Note:        The output relation is not sorted in it self, it is a set.
 
-def output(name, size) =
+def output(name, bytes) =
    track_csv:name(pos, name)
-   and track_csv:bytes(pos, size)
-   and bottom[10, track_csv:bytes[_]](rank, size)
+   and track_csv:bytes(pos, bytes)
+   and bottom[10, track_csv:bytes[_]](rank, bytes)
    from pos, rank
+
+
+   def track(bytes, name) =
+   track_csv:name(pos, name)
+   and track_csv:bytes(pos, bytes)
+   from pos
+
+   def output(name, bytes) = 
+      bottom[10, track](rank, bytes, name) from rank

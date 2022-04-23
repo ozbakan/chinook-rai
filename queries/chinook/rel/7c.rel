@@ -5,13 +5,8 @@
 def output(postal_code, truncated_postal_code) = 
     customer_csv:postal_code(pos, postal_code)
     and customer_csv:country(pos, "USA")
-    and truncated_postal_code = substring[postal_code, 1, 5]
-    from pos
-
-// We do this because Rel drops records with string size less than 5 
-def output(postal_code, truncated_postal_code) = 
-    customer_csv:postal_code(pos, postal_code)
-    and customer_csv:country(pos, "USA")
-    and truncated_postal_code = postal_code
-    and num_chars[postal_code] = 4
+    and (truncated_postal_code = substring[postal_code, 1, 5] 
+            and num_chars[postal_code] >= 5 
+         or truncated_postal_code = postal_code 
+            and num_chars[postal_code] < 5)
     from pos

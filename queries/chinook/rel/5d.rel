@@ -1,6 +1,6 @@
 // Author:       Tolga Ozbakan
 // Date:         02-15-2022
-// Description:  Selects invoices that are between two dates.
+// Description:  Selects invoices on a given day.
 
 def output(id, date, total) =
     invoice_csv:invoice_id(pos, id)

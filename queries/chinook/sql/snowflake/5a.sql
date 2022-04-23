@@ -6,8 +6,8 @@ select
     invoice_id,
     billing_country,
     billing_city,
-    total :: float8,
-    round(total :: float8 * 1.15, 2)
+    total::float8,
+    round(total::float8 * 1.15, 2)
 from
     invoice
 where
